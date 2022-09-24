@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771e461d7a3108940874b31ddeb568e3, type: 3}
+  m_Name: Dust Sprites
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 4462647235708812757, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
+  - {fileID: 3905177627365098371, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
+  - {fileID: -5761494961356669488, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
+  - {fileID: 2973077294693420633, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
+  - {fileID: 3854942437426567962, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
+  - {fileID: -1304329952162892207, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
+  - {fileID: -1829716303217650336, guid: fa377e1813a29ce40a721b00b6a8fd68, type: 3}
