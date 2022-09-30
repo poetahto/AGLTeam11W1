@@ -13,13 +13,13 @@ public class AutoResettingBool
     {
         get
         {
-            bool result = Time.time - _lastSetTime > _resetTime;
+            bool result = Time.unscaledTime - _lastSetTime > _resetTime;
             return _defaultValue ? result : !result;
         }
         set
         {
             if (value != _defaultValue)
-                _lastSetTime = Time.time;
+                _lastSetTime = Time.unscaledTime;
         }
     }
 

@@ -17,6 +17,6 @@ public class CameraFovHit : PreparedSingleton<CameraFovHit>
     private void Update()
     {
         _intensity = Mathf.MoveTowards(_intensity, 0, Time.deltaTime * recoverySpeed);
-        camera.fieldOfView = originalFov + (originalFov * _intensity);
+        camera.orthographicSize = originalFov + (originalFov * _intensity);
     }
 }
