@@ -2763,7 +2763,7 @@ MonoBehaviour:
   playerRigidbody: {fileID: 544994165}
   playerTransform: {fileID: 544994163}
   grappleTransform: {fileID: 1548620120}
-  boostWindow: 0.027
+  boostWindow: 0.05
   moveTowardsDamageableState:
     speed: 30
     acceleration: 70
