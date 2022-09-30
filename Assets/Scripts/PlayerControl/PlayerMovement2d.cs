@@ -67,6 +67,9 @@ namespace PlayerControl
 
             if (inputDirection != Vector2.zero || !IsGrounded)
             {
+                if ((int) Mathf.Sign(targetVelocity.x) == (int) Mathf.Sign(currentVelocity.x) && currentVelocity.magnitude > targetVelocity.magnitude)
+                    return;
+                
                 // is accelerating
                 float reverseMultiplier = didReverse ? settings.reverseMultiplier : 1;
                 float maxDelta = acceleration * reverseMultiplier * Time.deltaTime;

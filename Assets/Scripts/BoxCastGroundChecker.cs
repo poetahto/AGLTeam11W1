@@ -39,7 +39,7 @@ public class BoxCastGroundChecker : GroundChecker
             direction = Vector2.down
         };
         
-        _isGrounded = gameObject.Boxcast2dIgnoreSelf(ray, boxSize, 0, groundedDistance, out _);
+        _isGrounded = gameObject.Boxcast2dIgnoreSelf(ray, boxSize, out _, groundedDistance);
     }
 
     private void FixedUpdate()

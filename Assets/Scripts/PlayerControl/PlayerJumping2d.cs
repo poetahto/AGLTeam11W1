@@ -66,7 +66,7 @@ namespace PlayerControl
                 direction = Vector2.down
             };
 
-            return gameObject.Boxcast2dIgnoreSelf(ray, boxSize, 0, groundedDistance, out _);
+            return gameObject.Boxcast2dIgnoreSelf(ray, boxSize, out _, groundedDistance);
         }
 
         private void Jump()
