@@ -15,6 +15,8 @@ namespace PlayerControl
         [SerializeField] private Vector2 boxSize = Vector2.one;
         [SerializeField] private float jumpBufferTime = 0.5f;
         [SerializeField] private float coyoteTime = 0.25f;
+
+        public bool GravityEnabled { get; set; } = true;
         
         private AutoResettingBool _wantsToJump;
         private float _timeSpendFalling;
@@ -53,9 +55,12 @@ namespace PlayerControl
                 _coyoteAvailable = false;
             }
 
-            float gravity = Input.GetKey(KeyCode.Space) && rigidbody.velocity.y > 0 ? normalGravity : fastFallGravity;
-            gravity *= Time.deltaTime;
-            rigidbody.velocity += Vector2.down * gravity;
+            if (GravityEnabled)
+            {
+                float gravity = Input.GetKey(KeyCode.Space) && rigidbody.velocity.y > 0 ? normalGravity : fastFallGravity;
+                gravity *= Time.deltaTime;
+                rigidbody.velocity += Vector2.down * gravity;    
+            }
         }
 
         private bool IsGrounded()
