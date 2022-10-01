@@ -165,7 +165,6 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -188,7 +187,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -1242,54 +1241,6 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Tileset_3: 21300006
-      Tileset_27: 21300054
-      Tileset_17: 21300034
-      Tileset_18: 21300036
-      Tileset_13: 21300026
-      Tileset_25: 21300050
-      Tileset_10: 21300020
-      Tileset_45: 21300090
-      Tileset_31: 21300062
-      Tileset_14: 21300028
-      Tileset_23: 21300046
-      Tileset_1: 21300002
-      Tileset_5: 21300010
-      Tileset_46: 21300092
-      Tileset_26: 21300052
-      Tileset_33: 21300066
-      Tileset_15: 21300030
-      Tileset_20: 21300040
-      Tileset_32: 21300064
-      Tileset_22: 21300044
-      Tileset_9: 21300018
-      Tileset_34: 21300068
-      Tileset_39: 21300078
-      Tileset_42: 21300084
-      Tileset_41: 21300082
-      Tileset_7: 21300014
-      Tileset_12: 21300024
-      Tileset_0: 21300000
-      Tileset_4: 21300008
-      Tileset_37: 21300074
-      Tileset_28: 21300056
-      Tileset_11: 21300022
-      Tileset_19: 21300038
-      Tileset_16: 21300032
-      Tileset_35: 21300070
-      Tileset_2: 21300004
-      Tileset_40: 21300080
-      Tileset_29: 21300058
-      Tileset_6: 21300012
-      Tileset_43: 21300086
-      Tileset_38: 21300076
-      Tileset_8: 21300016
-      Tileset_24: 21300048
-      Tileset_36: 21300072
-      Tileset_21: 21300042
-      Tileset_30: 21300060
-      Tileset_44: 21300088
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

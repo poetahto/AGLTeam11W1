@@ -52,7 +52,7 @@ namespace PlayerControl
             }
 
             StateMachine.grappleTransform.position = Vector2.Lerp(StateMachine.grappleTransform.position,
-            StateMachine.playerTransform.position, recallSpeed * Time.deltaTime);
+            StateMachine.transform.position, recallSpeed * Time.deltaTime);
         }
     }
 
@@ -234,11 +234,6 @@ namespace PlayerControl
 
         [SerializeField] private float volumeSpeed;
         
-        private void OnGUI()
-        {
-            GUILayout.Label($"state: {_currentState.GetType().Name}");
-        }
-
         private void Update()
         {
             hitVolume.weight = Mathf.Lerp(hitVolume.weight, VolumeWeight, volumeSpeed*Time.unscaledDeltaTime);
