@@ -23,7 +23,7 @@ namespace PlayerControl
             TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
             CameraFovHit.Instance.Hit(fovHitAmount);
 
-            if (col.TryGetComponent(out DamageTarget target))
+            if (col.TryGetComponent(out CollisionTarget target))
                 target.OnDamage(gameObject);
             
             OnHit?.Invoke();

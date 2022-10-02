@@ -10,16 +10,10 @@ namespace PlayerControl
         
         public override void Update()
         {
-            base.Update();
-
-            Vector3 playerPosition = StateMachine.playerTransform.position;
-            
-            Debug.DrawLine(playerPosition, StateMachine.grappleTransform.position, Color.green);
-            
-            Vector2 direction = (StateMachine.grappleTransform.position - playerPosition).normalized;
+            Vector3 direction = (StateMachine.grappleTransform.position - StateMachine.playerTransform.position).normalized;
             StateMachine.playerRigidbody.AddForce(direction * grappleForce);
             
-            if (Input.GetKeyUp(KeyCode.Mouse0))
+            if (Input.GetKey(KeyCode.Mouse0) == false)
                 StateMachine.TransitionTo(StateMachine.idleState);
         }
     }

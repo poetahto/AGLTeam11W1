@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace
 {
-    public class DamageTarget : MonoBehaviour
+    public class CollisionTarget : MonoBehaviour
     {
         [SerializeField] private ParticleSpawner deathParticles;
 

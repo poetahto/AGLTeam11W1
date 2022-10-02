@@ -5,7 +5,7 @@ namespace DefaultNamespace
     public class GrappleTarget : MonoBehaviour
     {
         [SerializeField] private Optional<ParticleSpawner> particleSpawner;
-
+        
         public void OnGrappleHit(GameObject source, RaycastHit2D hitInfo)
         {
             Vector3 position = hitInfo.point;

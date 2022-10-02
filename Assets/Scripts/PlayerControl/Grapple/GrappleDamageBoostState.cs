@@ -43,10 +43,7 @@ namespace PlayerControl
             
             else if (Input.GetKeyUp(KeyCode.Mouse1))
             {
-                Vector3 playerPosition = StateMachine.playerTransform.position;
-                Vector3 aimPosition = StateMachine.Camera.ScreenToWorldPoint(Input.mousePosition);
-                aimPosition.z = playerPosition.z;
-                var ray = new Ray2D(playerPosition, aimPosition - playerPosition);
+                var ray = GetAimRay();
 
                 CameraShake.Instance.Shake(shakeAmount);
                 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class GroundChecker : MonoBehaviour
 {
@@ -16,7 +17,13 @@ public class BoxCastGroundChecker : GroundChecker
     
     private bool _isGrounded;
     private bool _dirty;
-    
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = _isGrounded ? Color.green : Color.red;
+        Gizmos.DrawCube((Vector2) transform.position + (Vector2.down * groundedDistance), boxSize);
+    }
+
     public override bool IsGrounded
     {
         get

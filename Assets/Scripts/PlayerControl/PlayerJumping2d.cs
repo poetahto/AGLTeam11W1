@@ -6,17 +6,17 @@ namespace PlayerControl
     {
         [Header("References")]
         [SerializeField] private new Rigidbody2D rigidbody;
+        [SerializeField] private GroundChecker groundChecker;
         
         [Header("Jumping Settings")]
         [SerializeField] private float jumpSpeed = 5.0f;
-        [SerializeField] private float groundedDistance = 0.6f;
         [SerializeField] private float normalGravity = 4;
         [SerializeField] private float fastFallGravity = 8;
-        [SerializeField] private Vector2 boxSize = Vector2.one;
         [SerializeField] private float jumpBufferTime = 0.5f;
         [SerializeField] private float coyoteTime = 0.25f;
 
         public bool GravityEnabled { get; set; } = true;
+        private bool IsGrounded => groundChecker.IsGrounded;
         
         private AutoResettingBool _wantsToJump;
         private float _timeSpendFalling;
@@ -35,9 +35,7 @@ namespace PlayerControl
 
         private void Update()
         {
-            bool isGrounded = IsGrounded();
-
-            if (!isGrounded)
+            if (!IsGrounded)
                 _timeSpendFalling += Time.deltaTime;
 
             else
@@ -49,7 +47,7 @@ namespace PlayerControl
             if (Input.GetKeyDown(KeyCode.Space))
                 _wantsToJump.Value = true;
 
-            if (_wantsToJump.Value && (isGrounded || (_timeSpendFalling < coyoteTime && _coyoteAvailable)))
+            if (_wantsToJump.Value && (IsGrounded || (_timeSpendFalling < coyoteTime && _coyoteAvailable)))
             {
                 Jump();
                 _coyoteAvailable = false;
@@ -61,17 +59,6 @@ namespace PlayerControl
                 gravity *= Time.deltaTime;
                 rigidbody.velocity += Vector2.down * gravity;    
             }
-        }
-
-        private bool IsGrounded()
-        {
-            var ray = new Ray2D
-            {
-                origin = transform.position,
-                direction = Vector2.down
-            };
-
-            return gameObject.Boxcast2dIgnoreSelf(ray, boxSize, out _, groundedDistance);
         }
 
         private void Jump()

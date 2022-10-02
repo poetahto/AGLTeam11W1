@@ -29,15 +29,12 @@ namespace PlayerControl
             base.Update();
 
             Vector3 playerPosition = StateMachine.playerTransform.position;
-            
-            Debug.DrawLine(playerPosition, StateMachine.grappleTransform.position, Color.yellow);
-            
             Vector2 vectorToGrapple = StateMachine.grappleTransform.position - playerPosition;
             
             StateMachine.playerRigidbody.velocity = Vector2.MoveTowards(StateMachine.playerRigidbody.velocity,
                 vectorToGrapple.normalized * speed, acceleration * Time.deltaTime);
             
-            if (Input.GetKeyUp(KeyCode.Mouse0) || vectorToGrapple.sqrMagnitude <= detachDistance * detachDistance)
+            if (Input.GetKey(KeyCode.Mouse0) == false || vectorToGrapple.sqrMagnitude <= detachDistance * detachDistance)
                 StateMachine.TransitionTo(StateMachine.idleState);
         }
     }
