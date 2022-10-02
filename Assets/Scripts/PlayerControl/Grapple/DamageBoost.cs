@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PlayerControl
 {
     [Serializable]
-    public class GrappleDamageBoostState : GrappleState
+    public class DamageBoost : GrappleState
     {
         [SerializeField] private float boostWindow;
         [SerializeField] private float slowDown;
@@ -16,9 +16,9 @@ namespace PlayerControl
         
         public override void OnEnter()
         {
-            base.OnEnter();
             _elapsedTime = 0;
-            TimeSlowdown.Instance.enabled = false;
+
+            TimeSlowdown.Instance.OverrideTimeScale();
             Time.timeScale = slowDown;
             StateMachine.VolumeWeight = 1;
             pointer.gameObject.SetActive(true);
@@ -26,29 +26,25 @@ namespace PlayerControl
 
         public override void OnExit()
         {
-            base.OnExit();
             Time.timeScale = 1;
-            TimeSlowdown.Instance.enabled = true;
+            TimeSlowdown.Instance.ReleaseTimeScale();
             StateMachine.VolumeWeight = 0;
             pointer.gameObject.SetActive(false);
         }
 
         public override void Update()
         {
-            base.Update();
             _elapsedTime += Time.deltaTime;
             
             if (_elapsedTime > boostWindow)
-                StateMachine.TransitionTo(StateMachine.idleState);
+                StateMachine.TransitionTo(StateMachine.Idle);
             
-            else if (Input.GetKeyUp(KeyCode.Mouse1))
+            else if (Input.GetKey(KeyCode.Mouse1) == false)
             {
-                var ray = GetAimRay();
-
                 CameraShake.Instance.Shake(shakeAmount);
                 
-                StateMachine.playerRigidbody.velocity = ray.direction * StateMachine.playerRigidbody.velocity.magnitude;
-                StateMachine.TransitionTo(StateMachine.idleState);
+                StateMachine.playerRigidbody.velocity = GetAimRay().direction * StateMachine.playerRigidbody.velocity.magnitude;
+                StateMachine.TransitionTo(StateMachine.Idle);
             }
         }
     }

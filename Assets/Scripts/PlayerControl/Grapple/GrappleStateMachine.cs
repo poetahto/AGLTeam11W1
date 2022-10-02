@@ -5,27 +5,36 @@ namespace PlayerControl
 {
     public class GrappleStateMachine : MonoBehaviour
     {
+        [Header("Dependencies")]
         [SerializeField] public Rigidbody2D playerRigidbody;
+        [SerializeField] public PlayerJumping2d playerJumping;
+        [SerializeField] private PlayerSpeedDamageSource damageSource;
         [SerializeField] public Transform playerTransform;
         [SerializeField] public Transform grappleTransform;
-        [SerializeField] private float boostWindow = 0.5f; 
         [SerializeField] private Volume hitVolume;
+
+        [Header("Boosting Settings")]
+        [SerializeField] private float boostWindow = 0.5f; 
         [SerializeField] private float volumeSpeed;
         
-        public GrappleMoveTowardsTargetState moveTowardsTargetState;
-        public GrappleMoveEnvironmentState moveEnvironmentState;
-        public GrappleDamageBoostState damageBoostState;
-        public GrappleIdleState idleState;
+        [Header("State Settings")]
+        [SerializeField] private Idle idle;
+        [SerializeField] private MoveTowardsTarget moveTowardsTarget;
+        [SerializeField] private MoveTowardsEnvironment moveTowardsEnvironment;
+        [SerializeField] private DamageBoost damageBoost;
+
+        public GrappleState Idle => idle;
+        public GrappleState MoveTowardsTarget => moveTowardsTarget;
+        public GrappleState MoveTowardsEnvironment => moveTowardsEnvironment;
+        public GrappleState DamageBoost => damageBoost;
 
         public float VolumeWeight { get; set; }
         public Camera Camera { get; private set; }
-        private bool ShouldBoost => _wantsToBoost && Time.unscaledTime - _boostTimestamp <= boostWindow;
         
         private Vector3 _aimPosition;
         private bool _isGrappling;
         private Vector2 _grapplePoint;
         private GrappleState _currentState;
-        private bool _wantsToBoost;
         private float _boostTimestamp = float.NaN;
         private float _hitTimestamp = float.NaN;
         
@@ -33,21 +42,27 @@ namespace PlayerControl
         {
             Camera = Camera.main;
 
-            moveTowardsTargetState.StateMachine = this;
-            moveEnvironmentState.StateMachine = this;
-            damageBoostState.StateMachine = this;
-            idleState.StateMachine = this;
+            idle.StateMachine = this;
+            moveTowardsTarget.StateMachine = this;
+            moveTowardsEnvironment.StateMachine = this;
+            damageBoost.StateMachine = this;
             
-            FindObjectOfType<PlayerSpeedDamageSource>().OnHit += OnOnHit;
-
-            TransitionTo(idleState);
+            TransitionTo(idle);
         }
 
-        private void OnOnHit()
+        private void OnEnable()
         {
-            _hitTimestamp = Time.unscaledTime;
-            if (ShouldBoost)
-                TransitionTo(damageBoostState);
+            damageSource.OnHit += OnHit;
+        }
+
+        private void OnDisable()
+        {
+            damageSource.OnHit -= OnHit;
+        }
+
+        private void OnHit()
+        {
+            _hitTimestamp = Time.time;
         }
 
         public void TransitionTo(GrappleState state)
@@ -59,17 +74,28 @@ namespace PlayerControl
         
         private void Update()
         {
+            // Animate the boost effect post processing.
             hitVolume.weight = Mathf.Lerp(hitVolume.weight, VolumeWeight, volumeSpeed*Time.unscaledDeltaTime);
             
-            _wantsToBoost = Input.GetKey(KeyCode.Mouse1);
-            
-            if (Input.GetKeyDown(KeyCode.Mouse1))
-                _boostTimestamp = Time.unscaledTime;
-
-            if (Time.unscaledTime - _hitTimestamp <= boostWindow && Time.unscaledTime - _boostTimestamp <= boostWindow && _currentState != damageBoostState)
-                TransitionTo(damageBoostState);
+            CheckForBoost();
             
             _currentState?.Update();
+        }
+
+        private void CheckForBoost()
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+                _boostTimestamp = Time.time;
+
+            float timeSinceHit = Time.time - _hitTimestamp;
+            float timeSinceInput = Time.time - _boostTimestamp;
+
+            if (timeSinceInput <= boostWindow && timeSinceHit <= boostWindow / 2 && _currentState != damageBoost)
+            {
+                TransitionTo(DamageBoost);
+                _boostTimestamp = float.NaN;
+                _hitTimestamp = float.NaN;
+            }
         }
     }
 }

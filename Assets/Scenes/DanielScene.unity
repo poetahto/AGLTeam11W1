@@ -1043,28 +1043,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 544994165}
+  playerJumping: {fileID: 544994166}
+  damageSource: {fileID: 544994170}
   playerTransform: {fileID: 544994163}
   grappleTransform: {fileID: 1548620120}
-  boostWindow: 0.05
   hitVolume: {fileID: 943855498}
+  boostWindow: 0.05
   volumeSpeed: 10
-  moveTowardsTargetState:
-    speed: 30
-    acceleration: 70
-    velocityBraking: 1
-    detachDistance: 1
-  moveEnvironmentState:
-    grappleForce: 13
-  damageBoostState:
-    boostWindow: 0.1
-    slowDown: 0.05
-    shakeAmount: 3
-    pointer: {fileID: 322154717}
-  idleState:
+  idle:
     timeAmount: 0.5
     timeDuration: 0.1
     shakeIntensity: 0.35
     recallSpeed: 5
+  moveTowardsTarget:
+    speed: 30
+    acceleration: 70
+    velocityBraking: 1
+    detachDistance: 1
+  moveTowardsEnvironment:
+    grappleForce: 13
+  damageBoost:
+    boostWindow: 0.1
+    slowDown: 0.05
+    shakeAmount: 3
+    pointer: {fileID: 322154717}
 --- !u!114 &544994170
 MonoBehaviour:
   m_ObjectHideFlags: 0

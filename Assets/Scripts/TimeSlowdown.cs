@@ -1,5 +1,4 @@
-﻿using System;
-using poetools;
+﻿using poetools;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -9,6 +8,7 @@ namespace DefaultNamespace
         private float _slowdown;
         private float _duration;
         private float _elapsedTime;
+        private bool _manualOverride;
 
         public void Hit(float amount, float duration)
         {
@@ -17,9 +17,19 @@ namespace DefaultNamespace
             _elapsedTime = 0;
         }
 
+        public void OverrideTimeScale()
+        {
+            _manualOverride = true;
+        }
+
+        public void ReleaseTimeScale()
+        {
+            _manualOverride = false;
+        }
+
         private void Update()
         {
-            if (_duration != 0)
+            if (_duration != 0 && !_manualOverride)
                 Time.timeScale = Mathf.Lerp(_slowdown, 1, _elapsedTime / _duration);
             
             _elapsedTime += Time.unscaledDeltaTime;
