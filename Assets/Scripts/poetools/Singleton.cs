@@ -36,7 +36,7 @@ namespace poetools
                 if (_instance == null)
                 {
                     string errorMessage = "Singleton was not prepared correctly. Call Prepare() before accessing!";
-                    Debug.LogError(errorMessage);
+                    Debug.LogError(errorMessage.Format(Rtf.Error));
                 }
 
                 return _instance;
@@ -71,7 +71,7 @@ namespace poetools
             if (instance != null && current != instance)
             {
                 var errorMessage = $"Duplicate Singleton removed from {current.gameObject.scene}.";
-                Debug.LogError(errorMessage);
+                Debug.LogError(errorMessage.Format(Rtf.Error));
                 Object.Destroy(current);
             }
         }

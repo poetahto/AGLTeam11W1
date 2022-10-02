@@ -11,7 +11,6 @@ namespace PlayerControl
         [SerializeField] private float timeHitDuration;
         [SerializeField] private float timeHitAmount;
         [SerializeField] private float fovHitAmount;
-        [SerializeField] private GameObject hitParticles;
 
         public event Action OnHit;
         
@@ -24,8 +23,8 @@ namespace PlayerControl
             TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
             CameraFovHit.Instance.Hit(fovHitAmount);
 
-            var instance = Instantiate(hitParticles);
-            instance.transform.SetPositionAndRotation(col.transform.position, Quaternion.LookRotation((transform.position - col.transform.position).normalized));
+            if (col.TryGetComponent(out DamageTarget target))
+                target.OnDamage(gameObject);
             
             OnHit?.Invoke();
         }
