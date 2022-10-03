@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Rendering;
 
-namespace PlayerControl
+namespace Player.Grapple
 {
     public class GrappleStateMachine : MonoBehaviour
     {

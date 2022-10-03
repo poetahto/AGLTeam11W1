@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace PlayerControl
+namespace Player.Grapple
 {
     [Serializable]
     public class MoveTowardsTarget : GrappleState

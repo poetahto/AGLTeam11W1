@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerControl
+namespace Player
 {
     public class PlayerJumping2d : MonoBehaviour
     {

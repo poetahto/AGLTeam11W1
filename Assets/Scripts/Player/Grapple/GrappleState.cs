@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PlayerControl
+namespace Player.Grapple
 {
     public abstract class GrappleState
     {

@@ -2,7 +2,7 @@
 using DefaultNamespace;
 using UnityEngine;
 
-namespace PlayerControl
+namespace Player
 {
     public class PlayerSpeedDamageSource : MonoBehaviour
     {
