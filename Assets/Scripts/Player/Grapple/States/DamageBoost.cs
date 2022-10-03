@@ -13,14 +13,14 @@ namespace Player.Grapple.States
         [SerializeField] private GameObject pointer;
         
         private float _elapsedTime;
+        private IDisposable _timeOverride;
         
         public override void OnEnter()
         {
             base.OnEnter();
             _elapsedTime = 0;
 
-            TimeSlowdown.Instance.OverrideTimeScale();
-            Time.timeScale = slowDown;
+            _timeOverride = TimeSlowdown.Instance.OverrideTimeScale(slowDown);
             StateMachine.VolumeWeight = 1;
             pointer.gameObject.SetActive(true);
         }
@@ -28,8 +28,8 @@ namespace Player.Grapple.States
         public override void OnExit()
         {
             base.OnExit();
-            Time.timeScale = 1;
-            TimeSlowdown.Instance.ReleaseTimeScale();
+            
+            _timeOverride.Dispose();
             StateMachine.VolumeWeight = 0;
             pointer.gameObject.SetActive(false);
         }
