@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace DefaultNamespace
 {
     public class GrappleTarget : MonoBehaviour
     {
         [SerializeField] private Optional<ParticleSpawner> particleSpawner;
-        
+
+        public UnityEvent onHit;
+
         public void OnGrappleHit(GameObject source, RaycastHit2D hitInfo)
         {
-            Vector3 position = hitInfo.point;
-            Quaternion rotation = Quaternion.LookRotation((source.transform.position - position).normalized);
-            
+            onHit.Invoke();
+
             if (particleSpawner.ShouldBeUsed)
-                particleSpawner.Value.Spawn(position, rotation);
+                PlayParticles(source.transform.position, hitInfo.point);
+        }
+
+        private void PlayParticles(Vector3 sourcePosition, Vector3 targetPosition)
+        {
+            Vector3 direction = (sourcePosition - targetPosition).normalized;
+            particleSpawner.Value.Spawn(targetPosition, Quaternion.LookRotation(direction));
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Player.Grapple
+namespace Player.Grapple.States
 {
     [Serializable]
     public class MoveTowardsEnvironment : GrappleState

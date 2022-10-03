@@ -1,14 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player.Grapple
 {
     public abstract class GrappleState
     {
         public GrappleStateMachine StateMachine { get; set; }
+
+        public UnityEvent onEnter;
+        public UnityEvent onExit;
         
-        public virtual void OnEnter() {}
-        public virtual void Update() {}
-        public virtual void OnExit() {}
+        public virtual void OnEnter() { onEnter.Invoke(); }
+        public virtual void Update()  { onExit.Invoke();  }
+        public virtual void OnExit()  {}
 
         protected Transform PlayerTransform => StateMachine.playerTransform;
         protected Transform GrappleTransform => StateMachine.grappleTransform;

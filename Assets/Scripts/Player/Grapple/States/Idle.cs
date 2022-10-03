@@ -2,7 +2,7 @@
 using DefaultNamespace;
 using UnityEngine;
 
-namespace Player.Grapple
+namespace Player.Grapple.States
 {
     [Serializable]
     public class Idle : GrappleState

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Player.Grapple
+namespace Player.Grapple.States
 {
     [Serializable]
     public class MoveTowardsTarget : GrappleState
@@ -13,12 +13,14 @@ namespace Player.Grapple
 
         public override void OnEnter()
         {
+            base.OnEnter();
             StateMachine.playerRigidbody.velocity *= velocityBraking;
             StateMachine.playerJumping.GravityEnabled = false;
         }
         
         public override void OnExit()
         {
+            base.OnExit();
             StateMachine.playerJumping.GravityEnabled = true;
         }
 

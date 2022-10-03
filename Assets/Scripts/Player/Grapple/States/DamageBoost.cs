@@ -2,7 +2,7 @@
 using DefaultNamespace;
 using UnityEngine;
 
-namespace Player.Grapple
+namespace Player.Grapple.States
 {
     [Serializable]
     public class DamageBoost : GrappleState
@@ -16,6 +16,7 @@ namespace Player.Grapple
         
         public override void OnEnter()
         {
+            base.OnEnter();
             _elapsedTime = 0;
 
             TimeSlowdown.Instance.OverrideTimeScale();
@@ -26,6 +27,7 @@ namespace Player.Grapple
 
         public override void OnExit()
         {
+            base.OnExit();
             Time.timeScale = 1;
             TimeSlowdown.Instance.ReleaseTimeScale();
             StateMachine.VolumeWeight = 0;
