@@ -10,6 +10,7 @@ namespace Player.Grapple
 
         private void Awake()
         {
+            transform.SetParent(null);
             _lineRenderer = GetComponent<LineRenderer>();
         }
 

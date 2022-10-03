@@ -1,13 +1,21 @@
 ﻿using poetools;
 using UnityEngine;
 
-public class CameraFovHit : PreparedSingleton<CameraFovHit>
+public class CameraFovHit : LazySingleton<CameraFovHit>
 {
-    [SerializeField] private new Camera camera;
-    [SerializeField] private float originalFov = 60;
-    [SerializeField] private float recoverySpeed = 1;
+    [SerializeField] private float recoverySpeed = 0.1f;
 
     private float _intensity;
+    private float _originalFov;
+    private Camera _camera;
+
+    private void Start()
+    {
+        _camera = Camera.main;
+
+        if (_camera != null)
+            _originalFov = _camera.orthographic ? _camera.orthographicSize : _camera.fieldOfView;
+    }
 
     public void Hit(float intensity)
     {
@@ -17,6 +25,12 @@ public class CameraFovHit : PreparedSingleton<CameraFovHit>
     private void Update()
     {
         _intensity = Mathf.MoveTowards(_intensity, 0, Time.deltaTime * recoverySpeed);
-        camera.orthographicSize = originalFov + (originalFov * _intensity);
+        
+        float newFov = _originalFov + _originalFov * _intensity;
+        
+        if (_camera.orthographic)
+            _camera.orthographicSize = newFov;
+        
+        else _camera.fieldOfView = newFov;
     }
 }

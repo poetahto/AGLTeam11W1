@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class TimeSlowdown : PreparedSingleton<TimeSlowdown>
+    public class TimeSlowdown : LazySingleton<TimeSlowdown>
     {
         private float _slowdown;
         private float _duration;
