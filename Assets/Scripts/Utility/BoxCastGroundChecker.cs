@@ -38,6 +38,8 @@ public class BoxCastGroundChecker : GroundChecker
         }
     }
 
+    private RaycastHit2D[] _hits = new RaycastHit2D[25];
+    
     private void UpdateIsGrounded()
     {
         var ray = new Ray2D

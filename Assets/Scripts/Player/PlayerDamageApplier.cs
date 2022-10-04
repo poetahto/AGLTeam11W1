@@ -14,13 +14,13 @@ namespace Player
 
         public void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.TryGetComponent(out PlayerDamageListener listener))
+            if (col.collider == GetComponent<Collider2D>() && col.gameObject.TryGetComponent(out PlayerDamageListener listener))
                 ApplyDamage(listener);
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (col.gameObject.TryGetComponent(out PlayerDamageListener listener))
+            if (col == GetComponent<Collider2D>() && col.gameObject.TryGetComponent(out PlayerDamageListener listener))
                 ApplyDamage(listener);
         }
 
