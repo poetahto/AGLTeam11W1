@@ -19,17 +19,24 @@ namespace Player
             _levelStateMachine = FindObjectOfType<LevelStateMachine>();
         }
 
+        private void OnDestroy()
+        {
+            StopAllCoroutines();
+        }
+
         public void OnHit(GameObject source, Vector3 point)
         {
             deathParticles.Play();
             deathParticles.transform.SetParent(null);
-            gameObject.SetActive(false);
+
             grapple.SetActive(false);
-            
-            Vector3 direction = (source.transform.position - point).normalized;
-            deathParticles.transform.SetPositionAndRotation(point, Quaternion.LookRotation(direction));
+            gameObject.SetActive(false);
+
+            deathParticles.transform.SetParent(null);
+            deathParticles.transform.position = point;
             CameraShake.Instance.Shake(shakeAmount);
             TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
+
             
             _levelStateMachine.RestartLevel();
         }

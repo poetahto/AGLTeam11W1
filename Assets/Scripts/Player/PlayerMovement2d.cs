@@ -44,9 +44,19 @@ namespace Player
         private static Vector2 GetInputDirection()
         {
             return new Vector2(
-                Input.GetAxisRaw("Horizontal"),
-                Input.GetAxisRaw("Vertical")
+                // Input.GetAxisRaw("Horizontal"),
+                // Input.GetAxisRaw("Vertical")
+                GetAxis(KeyCode.D, KeyCode.A),
+                GetAxis(KeyCode.W, KeyCode.S)
             );
+        }
+
+        private static float GetAxis(KeyCode positive, KeyCode negative)
+        {
+            float result = 0;
+            if (Input.GetKey(positive)) result++;
+            if (Input.GetKey(negative)) result--;
+            return result;
         }
 
         private void Move(MovementSettings settings)
