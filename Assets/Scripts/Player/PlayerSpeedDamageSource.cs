@@ -18,15 +18,16 @@ namespace Player
         {
             if (playerRigidbody.velocity.sqrMagnitude < minSpeed * minSpeed)
                 return;
-            
-            CameraShake.Instance.Shake(1);
-            TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
-            CameraFovHit.Instance.Hit(fovHitAmount);
 
             if (col.TryGetComponent(out CollisionTarget target))
+            {
+                CameraShake.Instance.Shake(1);
+                TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
+                CameraFovHit.Instance.Hit(fovHitAmount);
+                
                 target.OnDamage(gameObject);
-            
-            OnHit?.Invoke();
+                OnHit?.Invoke();
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 
 public abstract class GroundChecker : MonoBehaviour
@@ -47,8 +48,11 @@ public class BoxCastGroundChecker : GroundChecker
             origin = transform.position,
             direction = Vector2.down
         };
+
+        gameObject.BoxcastAll2dIgnoreSelf(ray, boxSize, _hits, out int hitCount, groundedDistance);
+        _isGrounded = _hits.Take(hitCount).Any(hit2D => !hit2D.collider.isTrigger);
         
-        _isGrounded = gameObject.Boxcast2dIgnoreSelf(ray, boxSize, out var hit, groundedDistance) && !hit.collider.isTrigger;
+        // _isGrounded = gameObject.Boxcast2dIgnoreSelf(ray, boxSize, out var hit, groundedDistance) && !hit.collider.isTrigger;
     }
 
     private void FixedUpdate()

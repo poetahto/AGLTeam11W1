@@ -44,4 +44,20 @@ public static class GameObjectExtensions
         gameObject.layer = oldLayer;
         return hitCount > 0;
     }
+    
+    public static bool BoxcastAll2dIgnoreSelf(
+        this GameObject gameObject,
+        Ray2D ray,
+        Vector2 size,
+        in RaycastHit2D[] hitArray,
+        out int hitCount,
+        float maxDistance = float.PositiveInfinity,
+        float angle = 0)
+    {
+        int oldLayer = gameObject.layer;
+        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+        hitCount = Physics2D.BoxCastNonAlloc(ray.origin, size, angle, ray.direction, hitArray, maxDistance);
+        gameObject.layer = oldLayer;
+        return hitCount > 0;
+    }
 }
