@@ -24,6 +24,9 @@ namespace DefaultNamespace.Utility
 
         public void TransitionTo(State state)
         {
+            if (CurrentState == state)
+                return;
+            
             CurrentState?.OnExit();
             CurrentState = state;
             CurrentState?.OnEnter();
