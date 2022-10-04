@@ -28,7 +28,7 @@ public class DoorControler : MonoBehaviour
 
         if (other.TryGetComponent<KeyHandeler>(out KeyHandeler keyHandler))
         {
-            if (keyHandler.useKey(id))
+            if (keyHandler.useKey(id, this.transform))
             {
                 keyTrigger.Invoke(); 
             }

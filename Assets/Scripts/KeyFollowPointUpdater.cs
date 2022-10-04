@@ -10,8 +10,7 @@ public class KeyFollowPointUpdater : MonoBehaviour
     {
         if (collision == KeyFollowPoint)
         {
-            Debug.Log("left");
-            KeyFollowPoint.transform.position = this.transform.position;
+            this.transform.position = KeyFollowPoint.transform.position;
         }
     }
 }
