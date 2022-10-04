@@ -5,13 +5,11 @@ namespace DefaultNamespace.Level
 {
     public class LevelStateMachine : StateMachine
     {
-        [SerializeField] private Starting startingState;
         [SerializeField] private Running runningState;
         [SerializeField] private Paused pausedState;
         [SerializeField] private Restarting restartingState;
         [SerializeField] private Completed completedState;
 
-        public LevelState StartingState => startingState;
         public LevelState RunningState => runningState;
         public LevelState PausedState => pausedState;
         public LevelState RestartingState => restartingState;
@@ -19,16 +17,25 @@ namespace DefaultNamespace.Level
 
         protected override State GetDefaultInitialState()
         {
-            return StartingState;
+            return RunningState;
         }
 
         private void Awake()
         {
-            StartingState.StateMachine = this;
             RunningState.StateMachine = this;
             PausedState.StateMachine = this;
             RestartingState.StateMachine = this;
             CompletedState.StateMachine = this;
+        }
+
+        public void CompleteLevel()
+        {
+            TransitionTo(completedState);
+        }
+
+        public void RestartLevel()
+        {
+            TransitionTo(restartingState);
         }
     }
 }

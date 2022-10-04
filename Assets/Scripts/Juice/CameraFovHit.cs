@@ -1,7 +1,7 @@
 ﻿using poetools;
 using UnityEngine;
 
-public class CameraFovHit : LazySingleton<CameraFovHit>
+public class CameraFovHit : PreparedSingleton<CameraFovHit>
 {
     [SerializeField] private float recoverySpeed = 0.1f;
 
