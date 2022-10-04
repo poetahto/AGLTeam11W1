@@ -28,18 +28,11 @@ namespace Player.Grapple.States
         {
             var ray = GetAimRay();
             PlayerTransform.gameObject.RaycastAll2dIgnoreSelf(ray, _hits, out int hitCount, maxDistance);
-            GrappleTarget grappleTarget = null;
             
             var hit = _hits
                 .Take(hitCount)
                 .OrderBy(hit2D => hit2D.distance)
-                .FirstOrDefault(hit2D => hit2D.collider.TryGetComponent(out grappleTarget));
-
-            if (hit == default)
-                hit = _hits
-                    .Take(hitCount)
-                    .OrderBy(hit2D => hit2D.distance)
-                    .FirstOrDefault(hit2D => !hit2D.collider.isTrigger);
+                .FirstOrDefault(hit2D => !hit2D.collider.isTrigger || hit2D.collider.TryGetComponent(out GrappleTarget _));
 
             if (hit == default)
                 hit.point = ray.origin + (ray.direction * maxDistance);
@@ -47,12 +40,12 @@ namespace Player.Grapple.States
             // Move the grapple sprite to the hit location.
             GrappleTransform.SetParent(hit.transform);
             GrappleTransform.position = hit.point;
-            
-            if (grappleTarget != null)
-                grappleTarget.OnGrappleHit(PlayerTransform.gameObject, hit);
 
             if (hit.transform != null)
             {
+                if (hit.transform.TryGetComponent(out GrappleTarget grappleTarget))
+                    grappleTarget.OnGrappleHit(PlayerTransform.gameObject, hit);
+                
                 // Determine the correct state to transition to.
                 StateMachine.TransitionTo(hit.transform.TryGetComponent(out CollisionTarget _)
                     ? StateMachine.MoveTowardsTarget
