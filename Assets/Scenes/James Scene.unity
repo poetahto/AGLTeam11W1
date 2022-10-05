@@ -822,18 +822,6 @@ BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 1909764235854441416, guid: e1d933ac672bf7648837d7ce974482c0, type: 3}
   m_PrefabInstance: {fileID: 2046539849}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &435860365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 435860356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bebdb9757682668408426acf20548978, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &472485033
 GameObject:
   m_ObjectHideFlags: 0
