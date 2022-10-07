@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 823ddde5b572b774a92c66714de78cc2
+guid: 35ea74297ac28d9488080afc01e67e0b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -17,9 +17,6 @@ TextureImporter:
   - first:
       213: -4935834299494285922
     second: door_4
-  - first:
-      213: -8064736477851923831
-    second: door_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -87,7 +84,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -99,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -111,7 +108,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -222,27 +219,6 @@ TextureImporter:
       bones: []
       spriteID: e9d34741bd4608bb0800000000000000
       internalID: -4935834299494285922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: door_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 98a4086f6ec441090800000000000000
-      internalID: -8064736477851923831
       vertices: []
       indices: 
       edges: []
