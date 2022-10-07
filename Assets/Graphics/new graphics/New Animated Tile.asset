@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b75c95f34a00d4e8c04f76b73312e6, type: 3}
+  m_Name: New Animated Tile
+  m_EditorClassIdentifier: 
+  m_AnimatedSprites:
+  - {fileID: 2944160970501187060, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  - {fileID: 1093884439467146244, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  - {fileID: -3161243952162541458, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  - {fileID: -7650940300895175629, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  - {fileID: -6111551027742581222, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  - {fileID: 1777781432648959660, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  - {fileID: -3229008471208610411, guid: d6685291a021e4909a269a930a8e8203, type: 3}
+  m_MinSpeed: 10
+  m_MaxSpeed: 10
+  m_AnimationStartTime: 0
+  m_AnimationStartFrame: 0
+  m_TileColliderType: 1
