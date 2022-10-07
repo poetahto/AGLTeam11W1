@@ -45,7 +45,7 @@ public class Key : MonoBehaviour
         if (_collected)
         {
             this.transform.position = Vector3.Lerp(this.transform.position,
-                keyFollowPoint.position + ((_killTime != -1) ? new Vector3(0,0,0) : new Vector3(1f*id,.25f*id,0)),
+                keyFollowPoint.position + ((_killTime != -1) ? new Vector3(0,0,0) : new Vector3(-1f*id,.25f*id,0)),
                 _lerp * Time.deltaTime);
 
             if (_killTime != -1 && Time.time > _killTime + killAfter)
