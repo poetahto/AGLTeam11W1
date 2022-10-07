@@ -113,7 +113,7 @@ MonoBehaviour:
   m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
-  m_StopNaN: 0
+  m_StopNaN: 1
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
@@ -153,12 +153,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AssetsPPU: 16
   m_RefResolutionX: 500
-  m_RefResolutionY: 180
+  m_RefResolutionY: 300
   m_UpscaleRT: 1
   m_PixelSnapping: 0
-  m_CropFrameX: 0
-  m_CropFrameY: 0
-  m_StretchFill: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 1
 --- !u!114 &5886874021993000524
 MonoBehaviour:
   m_ObjectHideFlags: 0

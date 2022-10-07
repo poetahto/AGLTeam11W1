@@ -589,8 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7a3831da484f6ba99ff0ab106dda1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxSize: {x: 0.77, y: 0.1}
-  groundedDistance: 0.4
+  boxSize: {x: 0.42, y: 0.1}
+  groundedDistance: 0.25
 --- !u!114 &1909764235854441414
 MonoBehaviour:
   m_ObjectHideFlags: 0
