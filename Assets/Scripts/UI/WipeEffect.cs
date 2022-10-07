@@ -11,6 +11,7 @@ namespace DefaultNamespace.UI
 
         private void Start()
         {
+            transform.SetParent(null);
             DontDestroyOnLoad(this);
         }
 
