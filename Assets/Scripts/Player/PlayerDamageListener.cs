@@ -7,6 +7,7 @@ namespace Player
     public class PlayerDamageListener : MonoBehaviour
     {
         [SerializeField] private ParticleSystem deathParticles;
+        [SerializeField] private AudioSource deathSound;
         [SerializeField] private GameObject grapple;
         [SerializeField] private float shakeAmount = 1;
         [SerializeField] private float timeHitAmount = 1;
@@ -17,6 +18,7 @@ namespace Player
         private void Awake()
         {
             _levelStateMachine = FindObjectOfType<LevelStateMachine>();
+            var wakeup = AudioPlayer.Instance;
         }
 
         private void OnDestroy()
@@ -26,6 +28,8 @@ namespace Player
 
         public void OnHit(GameObject source, Vector3 point)
         {
+            deathSound.Play();
+            
             deathParticles.Play();
             deathParticles.transform.SetParent(null);
 

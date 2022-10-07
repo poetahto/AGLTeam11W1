@@ -2,6 +2,7 @@
 using System.Linq;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Player.Grapple.States
 {
@@ -13,6 +14,7 @@ namespace Player.Grapple.States
         [SerializeField] private float shakeIntensity = 0.1f;
         [SerializeField] private float recallSpeed = 5;
         [SerializeField] private float maxDistance = 15;
+        [SerializeField] private UnityEvent onHit;
 
         public override void Update()
         {
@@ -52,6 +54,7 @@ namespace Player.Grapple.States
                     : StateMachine.MoveTowardsEnvironment);
 
                 ApplyHitJuice();
+                onHit.Invoke();
             }
         }
         

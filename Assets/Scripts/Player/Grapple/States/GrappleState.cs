@@ -11,8 +11,8 @@ namespace Player.Grapple
         public UnityEvent onExit;
         
         public virtual void OnEnter() { onEnter.Invoke(); }
-        public virtual void Update()  { onExit.Invoke();  }
-        public virtual void OnExit()  {}
+        public virtual void Update()  {}
+        public virtual void OnExit()  { onExit.Invoke(); }
 
         protected Transform PlayerTransform => StateMachine.playerTransform;
         protected Transform GrappleTransform => StateMachine.grappleTransform;
