@@ -25,7 +25,7 @@ namespace DefaultNamespace.Level
             base.OnEnter();
             SetInput(false);
             pauseMenu.SetActive(true);
-            _timeOverride = TimeSlowdown.Instance.OverrideTimeScale(0);
+            _timeOverride = TimeSlowdown.Instance.OverrideTimeScale(() => 0);
         }
 
         public override void OnExit()

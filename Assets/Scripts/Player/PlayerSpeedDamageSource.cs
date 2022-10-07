@@ -23,7 +23,6 @@ namespace Player
             {
                 CameraShake.Instance.Shake(1);
                 TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
-                CameraFovHit.Instance.Hit(fovHitAmount);
                 
                 target.OnDamage(gameObject);
                 OnHit?.Invoke();

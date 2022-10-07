@@ -33,9 +33,10 @@ namespace DefaultNamespace.Level
             TransitionTo(completedState);
         }
 
-        public void RestartLevel()
+        public void HandlePlayerDeath()
         {
-            TransitionTo(restartingState);
+            if (CurrentState == runningState)
+                TransitionTo(restartingState);
         }
     }
 }

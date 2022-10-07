@@ -10,7 +10,7 @@ namespace DefaultNamespace
         private class OverrideDisposable : IDisposable
         {
             public LinkedList<OverrideDisposable> List;
-            public float TargetTimeScale;
+            public Func<float> TargetTimeScale;
             
             public void Dispose()
             {
@@ -37,7 +37,7 @@ namespace DefaultNamespace
             _elapsedTime = 0;
         }
 
-        public IDisposable OverrideTimeScale(float value)
+        public IDisposable OverrideTimeScale(Func<float> value)
         {
             OverrideDisposable result = _overrideDisposablePool.Get();
             result.TargetTimeScale = value;
@@ -51,7 +51,7 @@ namespace DefaultNamespace
         {
             if (_overrides.Count > 0)
             {
-                Time.timeScale = _overrides.First.Value.TargetTimeScale;
+                Time.timeScale = _overrides.First.Value.TargetTimeScale();
                 return;
             }
             

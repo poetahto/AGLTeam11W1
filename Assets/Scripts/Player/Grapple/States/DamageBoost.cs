@@ -20,7 +20,7 @@ namespace Player.Grapple.States
             base.OnEnter();
             _elapsedTime = 0;
 
-            _timeOverride = TimeSlowdown.Instance.OverrideTimeScale(slowDown);
+            _timeOverride = TimeSlowdown.Instance.OverrideTimeScale(() => slowDown);
             StateMachine.VolumeWeight = 1;
             pointer.gameObject.SetActive(true);
         }

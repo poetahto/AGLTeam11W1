@@ -38,7 +38,7 @@ namespace Player
             TimeSlowdown.Instance.Hit(timeHitAmount, timeHitDuration);
 
             
-            _levelStateMachine.RestartLevel();
+            _levelStateMachine.HandlePlayerDeath();
         }
     }
 }
